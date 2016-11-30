@@ -1,0 +1,120 @@
+﻿@model IEnumerable<WebAppAspnet.Database.Class1.Company >
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 align ="center">Доска объявлений</h1>
+    <p align ="center" class="lead">Ваше объявление обязательно заметят!</p>
+</div>
+@*<div>
+    @foreach (WebAppAspnet.Database.Class1.Company b in Model)
+            {
+     
+            <p>@b.companyName</p>
+            <p>@b.companyAdress</p>
+            <p>@b.companySite</p>
+       
+    
+    }
+</div>*@
+<div class="search">
+    <form method="get" action="/search" target="_blank">
+        <input name="q" id="form-query" value="" placeholder="поиск по сайту" size="300">
+        <select class="combobox">
+            <option>Выберите объявление</option>
+            <option>Строительство</option>
+            <option>Трнаспорт</option>
+            <option>Недвижимость</option>
+            <option>Работа</option>
+            <option>Животные</option>
+        </select>
+        <select>
+            <option>Окна</option>
+            <option>Двери</option>
+        </select>
+        <input type="submit" value="Искать">
+    </form>
+</div>
+
+<input type="text" name="search" placeholder="Search..">
+
+<div class="row">
+    <!-- сам сделал -->
+    <div class="active item">
+        <ul class="thumbnails">
+            <li class="span3">
+                <div class="product-box">
+                    <p><a><img src="" alt="" /></a></p>
+                    <a class="title">Строительство</a><br />
+                    <a class="category">Все про окна</a><br />
+                </div>
+            </li>
+            <li class="span3">
+                <div class="product-box">
+                    <p><a><img src="" alt="" /></a></p>
+                    <a class="title">Трнаспорт</a><br />
+                    <a class="category">Все про двери</a><br />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- взял из авито -->
+    <div class="item item_table clearfix js-catalog-item-enum item-highlight" id="i867766951" data-type="2">
+
+        <div class="description">
+
+            <h3 class="title item-description-title">
+                <a class="item-description-title-link" href="/nytva/kvartiry/1-k_kvartira_13_m_55_et._867766951" title="1-к квартира, 13 м², 5/5 эт. в Нытве">
+                    1-к квартира, 13 м², 5/5 эт.
+                </a>
+            </h3>
+            <div class="about">
+                340 000 руб.
+            </div>
+
+            <div class="data">
+                <p>Нытва</p>
+                <div class="clearfix ">
+                    <div class="vas-applied">
+                        <!--noindex-->
+                        <a title="Премиум-объявление" class="icon-link link_plain" href="/info/usluga_premium_obyavleniya?plain&amp;itemId=867766951" rel="nofollow" target="_blank"><i class="i-vas-s-gray-premium i-vas-s-gray"></i></a> <a title="VIP-объявление" class="icon-link link_plain" href="/info/usluga_vip_obyavleniya?plain&amp;itemId=867766951" rel="nofollow" target="_blank"><i class="i-vas-s-gray-vip i-vas-s-gray"></i></a> <a title="Выделенное объявление" class="icon-link link_plain" href="/info/usluga_vydelenie_obyavleniya?plain&amp;itemId=867766951" rel="nofollow" target="_blank"><i class="i-vas-s-gray-highlight i-vas-s-gray"></i></a> <a title="Объявление поднято в поиске сегодня в 17:54" class="icon-link link_plain" href="/info/usluga_podnyat_obyavleniya?plain&amp;itemId=867766951" rel="nofollow" target="_blank"><i class="i-vas-s-gray-up i-vas-s-gray"></i></a> <!--/noindex-->
+                    </div>
+                    <div class="date c-2">
+                        Сегодня 17:54
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="item item_table clearfix js-catalog-item-enum item-highlight item_table_9" id="i869275516" data-type="2">
+
+        <div class="description">
+
+            <h3 class="title item-description-title">
+                <a class="item-description-title-link" href="/perm/avtomobili/nissan_x-trail_2012_869275516" title="Nissan X-Trail, 2012 в Перми">
+                    Nissan X-Trail, 2012
+                </a>
+            </h3> <div class="about">
+                800 000 руб.       <span class="params">
+                    <span class="param">78 000 км, 2.0&nbsp;AT&nbsp;(141 л.с.), внедорожник, полный, бензин</span>
+                </span>
+            </div>
+
+            <div class="data">
+                <p>р-н Ленинский</p>
+                <div class="clearfix ">
+                    <div class="vas-applied">
+                        <!--noindex-->
+                        <a title="Премиум-объявление" class="icon-link link_plain" href="/info/usluga_premium_obyavleniya?plain&amp;itemId=869275516" rel="nofollow" target="_blank"><i class="i-vas-s-gray-premium i-vas-s-gray"></i></a> <a title="VIP-объявление" class="icon-link link_plain" href="/info/usluga_vip_obyavleniya?plain&amp;itemId=869275516" rel="nofollow" target="_blank"><i class="i-vas-s-gray-vip i-vas-s-gray"></i></a> <a title="Выделенное объявление" class="icon-link link_plain" href="/info/usluga_vydelenie_obyavleniya?plain&amp;itemId=869275516" rel="nofollow" target="_blank"><i class="i-vas-s-gray-highlight i-vas-s-gray"></i></a>  <!--/noindex-->
+                    </div>
+                    <div class="date c-2">
+                        Сегодня 17:08
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
