@@ -6,44 +6,85 @@
 }
 
 <h2>Подробнее</h2>
-
+<h2>Рубрика: @Html.DisplayFor(model => model.adTitle)</h2>
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
+            @Html.DisplayNameFor(model => model.idAd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserId)
+            @Html.DisplayFor(model => model.idAd)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.adTitle)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserName)
+            @Html.DisplayFor(model => model.adTitle)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.adConfirm)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.adConfirm)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.adDatePublic)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.adDatePublic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idRubric)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idRubric)
         </dd>
 
     </dl>
 </div>
-<p>|
-    @Html.ActionLink("Back to List", "Index")
+
+<div>
+    <hr />
+    <h4>Информация о компании</h4>
+    <dl class="dl-horizontal">
+        <dt>CompanyPersonName</dt>
+        <dd>Иван</dd>
+        <dt>CompanyPersonSurName</dt>
+        <dd>Иванов</dd>
+        <dt>CompanyPersonSecName</dt>
+        <dd>Иванович</dd>
+        <dt>CompanyName</dt>
+        <dd>Три богатыря</dd>
+        <dt>CompanyPhone</dt>
+        <dd>228228</dd>
+        <dt>CompanyAdress</dt>
+        <dd>ул.Генкеля 7</dd>
+        <dt>CompanySite</dt>
+        <dd>http://www.psu.ru/</dd>
+        <dt>CompanyMail</dt>
+        <dd>yurka@gmail.com</dd>
+    </dl>
+</div>
+
+<p>
+    |
+    @Html.ActionLink("Вернуться к списку ообъявлений", "Index")
 </p>
