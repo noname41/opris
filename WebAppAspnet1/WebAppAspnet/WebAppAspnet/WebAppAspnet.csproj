@@ -80,6 +80,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -198,12 +200,42 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Table_AdsController.cs" />
+    <Compile Include="Controllers\Table_CompanyController.cs" />
+    <Compile Include="Controllers\Table_RubricsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OPRISmodel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OPRISmodel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPRISmodel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OPRISmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OPRISmodel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OPRISmodel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Ads.cs">
+      <DependentUpon>OPRISmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Company.cs">
+      <DependentUpon>OPRISmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Rubrics.cs">
+      <DependentUpon>OPRISmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Table_Users.cs">
+      <DependentUpon>OPRISmodel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserDataStorage.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,15 +248,35 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\OPRISmodel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OPRISmodel.edmx</DependentUpon>
+      <LastGenOutput>OPRISmodel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\OPRISmodel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OPRISmodel.edmx</DependentUpon>
+      <LastGenOutput>OPRISmodel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <EntityDeploy Include="Models\OPRISmodel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OPRISmodel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OPRISmodel.edmx.diagram">
+      <DependentUpon>OPRISmodel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Scripts\jquery-2.2.0.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery-2.2.0.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -267,6 +319,23 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_Ads.cshtml" />
+    <Content Include="Views\Home\_tableAds.cshtml" />
+    <Content Include="Views\Table_Ads\Create.cshtml" />
+    <Content Include="Views\Table_Ads\Delete.cshtml" />
+    <Content Include="Views\Table_Ads\Details.cshtml" />
+    <Content Include="Views\Table_Ads\Edit.cshtml" />
+    <Content Include="Views\Table_Ads\Index.cshtml" />
+    <Content Include="Views\Table_Company\Create.cshtml" />
+    <Content Include="Views\Table_Company\Delete.cshtml" />
+    <Content Include="Views\Table_Company\Details.cshtml" />
+    <Content Include="Views\Table_Company\Edit.cshtml" />
+    <Content Include="Views\Table_Company\Index.cshtml" />
+    <Content Include="Views\Table_Rubrics\Create.cshtml" />
+    <Content Include="Views\Table_Rubrics\Delete.cshtml" />
+    <Content Include="Views\Table_Rubrics\Details.cshtml" />
+    <Content Include="Views\Table_Rubrics\Edit.cshtml" />
+    <Content Include="Views\Table_Rubrics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,7 +346,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

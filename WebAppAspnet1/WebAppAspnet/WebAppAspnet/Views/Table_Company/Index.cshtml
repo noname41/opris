@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebAppAspnet.Models.Table_Company>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.companyPersonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyPersonSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyPersonSecName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyPackage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companySite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyFax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyPackEndDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyPersonName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyPersonSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyPersonSecName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyPackage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companySite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyFax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyPackEndDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_Company }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_Company }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_Company })
+        </td>
+    </tr>
+}
+
+</table>

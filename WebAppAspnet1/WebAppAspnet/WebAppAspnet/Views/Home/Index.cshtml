@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebAppAspnet.Models.UserModel>
+﻿
+
 
 @{
     ViewBag.Title = "Home Page";
@@ -9,28 +10,40 @@
     <p align ="center" class="lead">Ваше объявление обязательно заметят!</p>
 </div>
 
-<div class="search">
-    <form method="get" action="/search" target="_blank">
-        <input name="q" id="form-query" value="" placeholder="поиск по сайту" size="300"/>
-        <select style="height: 26px">
-            <option>Выберите объявление</option>
-            <option>Строительство</option>
-            <option>Трнаспорт</option>
-            <option>Недвижимость</option>
-            <option>Работа</option>
-            <option>Животные</option>
-        </select>
-        <select style="height: 26px">
-            <option>Окна</option>
-            <option>Двери</option>
-        </select>
-        <input type="submit" value="Искать"/>
-    </form>
-</div>
 
 <div class="row">
+
+    <p style="font-family:Arial, Helvetica, sans-serif;font-size:36px"><b>Поиск объявления...</b> </p>
+    <div class="search">
+        @{
+            AjaxOptions ajax = new AjaxOptions
+            {
+                UpdateTargetId = "programmersList",
+                Url = Url.Action("GetAds")
+            };
+        }
+        <div>
+        @using (Ajax.BeginForm(ajax))
+        {
+            <input name = "filter" id = "strquery" value = "@ViewBag.filter" placeholder = "поиск по сайту" size = "300"/>
+            <select name = "cmbox" onselect = "@ViewBag.cmbox" style = "height: 26px">
+                <option> Выберите рубрику </option>
+                <option > Social Services </option>
+                <option > Transport </option>
+                <option > Building </option>
+                <option > Work </option>
+            </select>
+            <span>
+                <button type = "submit" > Найти </button >
+            </span>
+            <div class ="row" id="programmersList">
+                    @Html.Action("GetAds")
+            </div>
+        }
+        </div>
+        </div>
     <!-- сам сделал -->
-    <div class="active item">
+    @*<div class="active item">
         <ul class="thumbnails">
             <li class="span3">
                 <div class="product-box">
@@ -41,10 +54,10 @@
                 </div>
             </li>
         </ul>
-    </div>
+    </div>*@
     <!-- взял из авито -->
 
-    <div class="item item_table clearfix js-catalog-item-enum item-highlight item_table_9" id="i869275516" data-type="2">
+    @*<div class="item item_table clearfix js-catalog-item-enum item-highlight item_table_9" id="i869275516" data-type="2">
 
         <div class="description">
 
@@ -65,17 +78,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="span3">
+    </div>*@
+    @*<div class="span3">
         <div class="product-box">
             <p><a><img src="" alt="" /></a></p>
             <a class="title">Программист PHP, WEB-разработчик</a><br />
             <a class="category">IT, интернет, телеком</a><br />
             <a class="category">25 ноября 12:32</a><br />
         </div>
-    </div>
+    </div>*@
 
-    <div class="active item">
+    @*<div class="active item">
         @foreach (var item in Model)
         {
             <p>Заглавие: @item.adTitle</p>
@@ -83,5 +96,5 @@
             <p>Рубрики: </p>
             @Html.ActionLink("Подробнее", "Details", new { id = item.idAd })
         }
-    </div>
+    </div>*@
 </div>
