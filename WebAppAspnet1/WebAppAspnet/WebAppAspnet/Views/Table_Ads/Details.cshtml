@@ -1,0 +1,59 @@
+﻿@model WebAppAspnet.Models.Table_Ads
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Table_Ads</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.adTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adConfirm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adConfirm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adDatePublic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adDatePublic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_Rubric)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_Rubric)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Ad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

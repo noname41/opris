@@ -1,0 +1,65 @@
+﻿@model WebAppAspnet.Models.Table_Ads
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Table_Ads</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.adTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adConfirm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adConfirm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adDatePublic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adDatePublic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_Rubric)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_Rubric)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

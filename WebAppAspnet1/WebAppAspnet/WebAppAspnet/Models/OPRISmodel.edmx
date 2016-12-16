@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище OPRISModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "OPRIS.dbo.Table_AdCompany" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Table_AdCompany">
+          <Key>
+            <PropertyRef Name="id_Ad" />
+            <PropertyRef Name="id_Company" />
+          </Key>
+          <Property Name="id_Ad" Type="int" Nullable="false" />
+          <Property Name="id_Company" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Ads">
+          <Key>
+            <PropertyRef Name="id_Ad" />
+          </Key>
+          <Property Name="id_Ad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="adConfirm" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="adDatePublic" Type="datetime" Nullable="false" />
+          <Property Name="adText" Type="nvarchar(max)" />
+          <Property Name="id_Rubric" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Company">
+          <Key>
+            <PropertyRef Name="id_Company" />
+          </Key>
+          <Property Name="id_Company" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="companyPersonName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="companyPersonSurname" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="companyPersonSecName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="companyName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="companyPackage" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="companyPhone" Type="int" Nullable="false" />
+          <Property Name="companyAdress" Type="nchar" MaxLength="80" />
+          <Property Name="companySite" Type="nchar" MaxLength="50" />
+          <Property Name="companyMail" Type="nchar" MaxLength="50" />
+          <Property Name="companyFax" Type="int" />
+          <Property Name="companyInfo" Type="nchar" MaxLength="250" />
+          <Property Name="companyPackEndDate" Type="date" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "OPRIS.dbo.Table_RubAd" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Table_RubAd">
+          <Key>
+            <PropertyRef Name="id_Ad" />
+            <PropertyRef Name="id_Rubric" />
+          </Key>
+          <Property Name="id_Ad" Type="int" Nullable="false" />
+          <Property Name="id_Rubric" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Rubrics">
+          <Key>
+            <PropertyRef Name="id_Rubric" />
+          </Key>
+          <Property Name="id_Rubric" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rubName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_Users">
+          <Key>
+            <PropertyRef Name="id_User" />
+          </Key>
+          <Property Name="id_User" Type="int" Nullable="false" />
+          <Property Name="userLogin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userRole" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="id_Company" Type="int" />
+        </EntityType>
+        <Association Name="FK_Table_AdCompany_Table_Ads">
+          <End Role="Table_Ads" Type="Self.Table_Ads" Multiplicity="1" />
+          <End Role="Table_AdCompany" Type="Self.Table_AdCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Ads">
+              <PropertyRef Name="id_Ad" />
+            </Principal>
+            <Dependent Role="Table_AdCompany">
+              <PropertyRef Name="id_Ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_AdCompany_Table_Company">
+          <End Role="Table_Company" Type="Self.Table_Company" Multiplicity="1" />
+          <End Role="Table_AdCompany" Type="Self.Table_AdCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Company">
+              <PropertyRef Name="id_Company" />
+            </Principal>
+            <Dependent Role="Table_AdCompany">
+              <PropertyRef Name="id_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_RubAd_Table_Ads1">
+          <End Role="Table_Ads" Type="Self.Table_Ads" Multiplicity="1" />
+          <End Role="Table_RubAd" Type="Self.Table_RubAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Ads">
+              <PropertyRef Name="id_Ad" />
+            </Principal>
+            <Dependent Role="Table_RubAd">
+              <PropertyRef Name="id_Ad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_RubAd_Table_Rubrics">
+          <End Role="Table_Rubrics" Type="Self.Table_Rubrics" Multiplicity="1" />
+          <End Role="Table_RubAd" Type="Self.Table_RubAd" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Rubrics">
+              <PropertyRef Name="id_Rubric" />
+            </Principal>
+            <Dependent Role="Table_RubAd">
+              <PropertyRef Name="id_Rubric" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_Users_Table_Company">
+          <End Role="Table_Company" Type="Self.Table_Company" Multiplicity="0..1" />
+          <End Role="Table_Users" Type="Self.Table_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Company">
+              <PropertyRef Name="id_Company" />
+            </Principal>
+            <Dependent Role="Table_Users">
+              <PropertyRef Name="id_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище OPRISModelContainer">
+          <EntitySet Name="Table_Ads" EntityType="Self.Table_Ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Company" EntityType="Self.Table_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Rubrics" EntityType="Self.Table_Rubrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_Users" EntityType="Self.Table_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_AdCompany" EntityType="Self.Table_AdCompany" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_AdCompany].[id_Ad] AS [id_Ad], 
+    [Table_AdCompany].[id_Company] AS [id_Company]
+    FROM [dbo].[Table_AdCompany] AS [Table_AdCompany]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Table_RubAd" EntityType="Self.Table_RubAd" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Table_RubAd].[id_Ad] AS [id_Ad], 
+    [Table_RubAd].[id_Rubric] AS [id_Rubric]
+    FROM [dbo].[Table_RubAd] AS [Table_RubAd]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Table_AdCompany_Table_Ads" Association="Self.FK_Table_AdCompany_Table_Ads">
+            <End Role="Table_Ads" EntitySet="Table_Ads" />
+            <End Role="Table_AdCompany" EntitySet="Table_AdCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_AdCompany_Table_Company" Association="Self.FK_Table_AdCompany_Table_Company">
+            <End Role="Table_Company" EntitySet="Table_Company" />
+            <End Role="Table_AdCompany" EntitySet="Table_AdCompany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_RubAd_Table_Ads1" Association="Self.FK_Table_RubAd_Table_Ads1">
+            <End Role="Table_Ads" EntitySet="Table_Ads" />
+            <End Role="Table_RubAd" EntitySet="Table_RubAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_RubAd_Table_Rubrics" Association="Self.FK_Table_RubAd_Table_Rubrics">
+            <End Role="Table_Rubrics" EntitySet="Table_Rubrics" />
+            <End Role="Table_RubAd" EntitySet="Table_RubAd" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Table_Users_Table_Company" Association="Self.FK_Table_Users_Table_Company">
+            <End Role="Table_Company" EntitySet="Table_Company" />
+            <End Role="Table_Users" EntitySet="Table_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OPRISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Table_Ads">
+          <Key>
+            <PropertyRef Name="id_Ad" />
+          </Key>
+          <Property Name="id_Ad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adConfirm" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adDatePublic" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_Rubric" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Table_Company" Relationship="Self.Table_AdCompany" FromRole="Table_Ads" ToRole="Table_Company" />
+          <NavigationProperty Name="Table_Rubrics" Relationship="Self.Table_RubAd" FromRole="Table_Ads" ToRole="Table_Rubrics" />
+        </EntityType>
+        <EntityType Name="Table_Company">
+          <Key>
+            <PropertyRef Name="id_Company" />
+          </Key>
+          <Property Name="id_Company" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyPersonName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="companyPersonSurname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="companyPersonSecName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="companyName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="companyPackage" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="companyPhone" Type="Int32" Nullable="false" />
+          <Property Name="companyAdress" Type="String" MaxLength="80" FixedLength="true" Unicode="true" />
+          <Property Name="companySite" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="companyMail" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="companyFax" Type="Int32" />
+          <Property Name="companyInfo" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="companyPackEndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Table_Users" Relationship="Self.FK_Table_Users_Table_Company" FromRole="Table_Company" ToRole="Table_Users" />
+          <NavigationProperty Name="Table_Ads" Relationship="Self.Table_AdCompany" FromRole="Table_Company" ToRole="Table_Ads" />
+        </EntityType>
+        <EntityType Name="Table_Rubrics">
+          <Key>
+            <PropertyRef Name="id_Rubric" />
+          </Key>
+          <Property Name="id_Rubric" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rubName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Table_Ads" Relationship="Self.Table_RubAd" FromRole="Table_Rubrics" ToRole="Table_Ads" />
+        </EntityType>
+        <EntityType Name="Table_Users">
+          <Key>
+            <PropertyRef Name="id_User" />
+          </Key>
+          <Property Name="id_User" Type="Int32" Nullable="false" />
+          <Property Name="userLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userRole" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_Company" Type="Int32" />
+          <NavigationProperty Name="Table_Company" Relationship="Self.FK_Table_Users_Table_Company" FromRole="Table_Users" ToRole="Table_Company" />
+        </EntityType>
+        <Association Name="FK_Table_Users_Table_Company">
+          <End Role="Table_Company" Type="Self.Table_Company" Multiplicity="0..1" />
+          <End Role="Table_Users" Type="Self.Table_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Table_Company">
+              <PropertyRef Name="id_Company" />
+            </Principal>
+            <Dependent Role="Table_Users">
+              <PropertyRef Name="id_Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Table_AdCompany">
+          <End Role="Table_Ads" Type="Self.Table_Ads" Multiplicity="*" />
+          <End Role="Table_Company" Type="Self.Table_Company" Multiplicity="*" />
+        </Association>
+        <Association Name="Table_RubAd">
+          <End Role="Table_Ads" Type="Self.Table_Ads" Multiplicity="*" />
+          <End Role="Table_Rubrics" Type="Self.Table_Rubrics" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="OPRISEntities12" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Table_Ads" EntityType="Self.Table_Ads" />
+          <EntitySet Name="Table_Company" EntityType="Self.Table_Company" />
+          <EntitySet Name="Table_Rubrics" EntityType="Self.Table_Rubrics" />
+          <EntitySet Name="Table_Users" EntityType="Self.Table_Users" />
+          <AssociationSet Name="FK_Table_Users_Table_Company" Association="Self.FK_Table_Users_Table_Company">
+            <End Role="Table_Company" EntitySet="Table_Company" />
+            <End Role="Table_Users" EntitySet="Table_Users" />
+          </AssociationSet>
+          <AssociationSet Name="Table_AdCompany" Association="Self.Table_AdCompany">
+            <End Role="Table_Ads" EntitySet="Table_Ads" />
+            <End Role="Table_Company" EntitySet="Table_Company" />
+          </AssociationSet>
+          <AssociationSet Name="Table_RubAd" Association="Self.Table_RubAd">
+            <End Role="Table_Ads" EntitySet="Table_Ads" />
+            <End Role="Table_Rubrics" EntitySet="Table_Rubrics" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище OPRISModelContainer" CdmEntityContainer="OPRISEntities12">
+          <EntitySetMapping Name="Table_Ads">
+            <EntityTypeMapping TypeName="OPRISModel.Table_Ads">
+              <MappingFragment StoreEntitySet="Table_Ads">
+                <ScalarProperty Name="id_Ad" ColumnName="id_Ad" />
+                <ScalarProperty Name="adTitle" ColumnName="adTitle" />
+                <ScalarProperty Name="adConfirm" ColumnName="adConfirm" />
+                <ScalarProperty Name="adDatePublic" ColumnName="adDatePublic" />
+                <ScalarProperty Name="adText" ColumnName="adText" />
+                <ScalarProperty Name="id_Rubric" ColumnName="id_Rubric" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Company">
+            <EntityTypeMapping TypeName="OPRISModel.Table_Company">
+              <MappingFragment StoreEntitySet="Table_Company">
+                <ScalarProperty Name="id_Company" ColumnName="id_Company" />
+                <ScalarProperty Name="companyPersonName" ColumnName="companyPersonName" />
+                <ScalarProperty Name="companyPersonSurname" ColumnName="companyPersonSurname" />
+                <ScalarProperty Name="companyPersonSecName" ColumnName="companyPersonSecName" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="companyPackage" ColumnName="companyPackage" />
+                <ScalarProperty Name="companyPhone" ColumnName="companyPhone" />
+                <ScalarProperty Name="companyAdress" ColumnName="companyAdress" />
+                <ScalarProperty Name="companySite" ColumnName="companySite" />
+                <ScalarProperty Name="companyMail" ColumnName="companyMail" />
+                <ScalarProperty Name="companyFax" ColumnName="companyFax" />
+                <ScalarProperty Name="companyInfo" ColumnName="companyInfo" />
+                <ScalarProperty Name="companyPackEndDate" ColumnName="companyPackEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Rubrics">
+            <EntityTypeMapping TypeName="OPRISModel.Table_Rubrics">
+              <MappingFragment StoreEntitySet="Table_Rubrics">
+                <ScalarProperty Name="id_Rubric" ColumnName="id_Rubric" />
+                <ScalarProperty Name="rubName" ColumnName="rubName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_Users">
+            <EntityTypeMapping TypeName="OPRISModel.Table_Users">
+              <MappingFragment StoreEntitySet="Table_Users">
+                <ScalarProperty Name="id_User" ColumnName="id_User" />
+                <ScalarProperty Name="userLogin" ColumnName="userLogin" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="userRole" ColumnName="userRole" />
+                <ScalarProperty Name="id_Company" ColumnName="id_Company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Table_AdCompany" TypeName="OPRISModel.Table_AdCompany" StoreEntitySet="Table_AdCompany">
+            <EndProperty Name="Table_Ads">
+              <ScalarProperty Name="id_Ad" ColumnName="id_Ad" />
+            </EndProperty>
+            <EndProperty Name="Table_Company">
+              <ScalarProperty Name="id_Company" ColumnName="id_Company" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Table_RubAd" TypeName="OPRISModel.Table_RubAd" StoreEntitySet="Table_RubAd">
+            <EndProperty Name="Table_Ads">
+              <ScalarProperty Name="id_Ad" ColumnName="id_Ad" />
+            </EndProperty>
+            <EndProperty Name="Table_Rubrics">
+              <ScalarProperty Name="id_Rubric" ColumnName="id_Rubric" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

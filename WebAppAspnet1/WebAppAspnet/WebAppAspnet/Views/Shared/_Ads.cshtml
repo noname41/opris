@@ -1,0 +1,30 @@
+﻿
+@using WebAppAspnet.Models
+@model IEnumerable<Table_Ads>
+
+<table class ="table" id="tablAds">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.adTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adDatePublic)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.adTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adDatePublic)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.id_Ad})
+        </td>
+    </tr>
+}
+
+</table>

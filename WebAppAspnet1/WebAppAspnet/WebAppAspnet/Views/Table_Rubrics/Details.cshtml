@@ -1,0 +1,27 @@
+﻿@model WebAppAspnet.Models.Table_Rubrics
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Table_Rubrics</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.rubName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rubName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Rubric }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
