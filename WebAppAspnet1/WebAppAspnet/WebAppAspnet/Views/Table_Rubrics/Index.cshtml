@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Рубрики</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить новую рубрику", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,9 +24,9 @@
             @Html.DisplayFor(modelItem => item.rubName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_Rubric }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_Rubric }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_Rubric })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.id_Rubric }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.id_Rubric }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_Rubric })
         </td>
     </tr>
 }

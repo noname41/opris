@@ -116,7 +116,7 @@ namespace WebAppAspnet.Controllers
         }
 
 
-        public ActionResult GetAds(string filter = null, string cmbox = null)
+        public PartialViewResult GetAds(string filter = null, string cmbox = null)
         {
             //List<Table_Ads> model = db.Table_Ads
             List<Table_Ads> model = db.Table_Ads.Include(p => p.Table_Rubrics).ToList();
@@ -161,7 +161,7 @@ namespace WebAppAspnet.Controllers
                     }
                 }
 
-            return View("_tableAds", reslist);
+            return PartialView("_tableAds", reslist);
         }
 
         //public ActionResult Details(int id)

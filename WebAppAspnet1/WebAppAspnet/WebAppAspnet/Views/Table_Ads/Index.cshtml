@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Объявления</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить новое объявление", "Create")
 </p>
 <table class="table">
     <tr>
@@ -48,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.id_Rubric)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_Ad }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_Ad }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_Ad })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.id_Ad }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.id_Ad }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.id_Ad })
         </td>
     </tr>
 }

@@ -11,7 +11,8 @@ namespace WebAppAspnet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Table_Rubrics
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,9 @@ namespace WebAppAspnet.Models
         {
             this.Table_Ads = new HashSet<Table_Ads>();
         }
-    
+        [Display(Name = "Номер рубрики")]
         public int id_Rubric { get; set; }
+        [Display(Name = "Название рубрики")]
         public string rubName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

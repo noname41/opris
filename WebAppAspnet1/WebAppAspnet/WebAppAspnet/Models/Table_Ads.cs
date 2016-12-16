@@ -11,7 +11,8 @@ namespace WebAppAspnet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Table_Ads
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,12 +21,17 @@ namespace WebAppAspnet.Models
             this.Table_Company = new HashSet<Table_Company>();
             this.Table_Rubrics = new HashSet<Table_Rubrics>();
         }
-    
+        [Display(Name = "Номер объявления")]
         public int id_Ad { get; set; }
+        [Display(Name = "Заголовок")]
         public string adTitle { get; set; }
+        [Display(Name = "Подтверджение")]
         public string adConfirm { get; set; }
+        [Display(Name = "Дата публикации")]
         public System.DateTime adDatePublic { get; set; }
+        [Display(Name = "Текст объявления")]
         public string adText { get; set; }
+        [Display(Name = "Номер рубрики")]
         public int id_Rubric { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -11,13 +11,19 @@ namespace WebAppAspnet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Table_Users
     {
+        [Display(Name = "Номер пользователя")]
         public int id_User { get; set; }
+        [Display(Name = "Логин")]
         public string userLogin { get; set; }
+        [Display(Name = "Пароль")]
         public string userPassword { get; set; }
+        [Display(Name = "Роль")]
         public string userRole { get; set; }
+        [Display(Name = "Номер компании")]
         public Nullable<int> id_Company { get; set; }
     
         public virtual Table_Company Table_Company { get; set; }
