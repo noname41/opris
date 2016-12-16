@@ -1,0 +1,121 @@
+﻿@model WebAppAspnet.Models.Table_Company
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Table_Company</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPersonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPersonName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPersonSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPersonSurname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPersonSecName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPersonSecName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPackage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPackage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companySite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companySite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyFax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyFax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPackEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPackEndDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

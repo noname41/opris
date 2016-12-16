@@ -1,0 +1,100 @@
+﻿
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1 align ="center">Доска объявлений</h1>
+    <p align ="center" class="lead">Ваше объявление обязательно заметят!</p>
+</div>
+
+
+<div class="row">
+
+    <p style="font-family:Arial, Helvetica, sans-serif;font-size:36px"><b>Поиск объявления...</b> </p>
+    <div class="search">
+        @{
+            AjaxOptions ajax = new AjaxOptions
+            {
+                UpdateTargetId = "programmersList",
+                Url = Url.Action("GetAds")
+            };
+        }
+        <div>
+        @using (Ajax.BeginForm(ajax))
+        {
+            <input name = "filter" id = "strquery" value = "@ViewBag.filter" placeholder = "поиск по сайту" size = "300"/>
+            <select name = "cmbox" onselect = "@ViewBag.cmbox" style = "height: 26px">
+                <option> Выберите рубрику </option>
+                <option > Social Services </option>
+                <option > Transport </option>
+                <option > Building </option>
+                <option > Work </option>
+            </select>
+            <span>
+                <button type = "submit" > Найти </button >
+            </span>
+            <div class ="row" id="programmersList">
+                    @Html.Action("GetAds")
+            </div>
+        }
+        </div>
+        </div>
+    <!-- сам сделал -->
+    @*<div class="active item">
+        <ul class="thumbnails">
+            <li class="span3">
+                <div class="product-box">
+                    <p><a><img src="" alt="" /></a></p>
+                    <a class="title">Заголовок объявления</a><br />
+                    <a class="category">Телефон</a><br />
+                    <a class="category">Дата</a><br />
+                </div>
+            </li>
+        </ul>
+    </div>*@
+    <!-- взял из авито -->
+
+    @*<div class="item item_table clearfix js-catalog-item-enum item-highlight item_table_9" id="i869275516" data-type="2">
+
+        <div class="description">
+
+            <h3 class="title item-description-title">
+                <a class="item-description-title-link" href="/perm/avtomobili/nissan_x-trail_2012_869275516" title="Nissan X-Trail, 2012 в Перми">
+                    Nissan X-Trail, 2012
+                </a>
+            </h3> 
+            <div class="data">
+                <div class="clearfix ">
+                    <div class="vas-applied">
+                        <!--noindex-->
+                        <a title="Премиум-объявление" class="icon-link link_plain"><i class="i-vas-s-gray-premium i-vas-s-gray"></i></a> <a title="VIP-объявление" class="icon-link link_plain" href="/info/usluga_vip_obyavleniya?plain&amp;itemId=869275516" rel="nofollow" target="_blank"><i class="i-vas-s-gray-vip i-vas-s-gray"></i></a> <a title="Выделенное объявление" class="icon-link link_plain" href="/info/usluga_vydelenie_obyavleniya?plain&amp;itemId=869275516" rel="nofollow" target="_blank"><i class="i-vas-s-gray-highlight i-vas-s-gray"></i></a>  <!--/noindex-->
+                    </div>
+                    <div class="date c-2">
+                        Сегодня 17:08
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    @*<div class="span3">
+        <div class="product-box">
+            <p><a><img src="" alt="" /></a></p>
+            <a class="title">Программист PHP, WEB-разработчик</a><br />
+            <a class="category">IT, интернет, телеком</a><br />
+            <a class="category">25 ноября 12:32</a><br />
+        </div>
+    </div>*@
+
+    @*<div class="active item">
+        @foreach (var item in Model)
+        {
+            <p>Заглавие: @item.adTitle</p>
+            <p>Дата публикации: @item.adDatePublic</p>
+            <p>Рубрики: </p>
+            @Html.ActionLink("Подробнее", "Details", new { id = item.idAd })
+        }
+    </div>*@
+</div>

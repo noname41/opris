@@ -1,0 +1,130 @@
+﻿@model WebAppAspnet.Models.IndexViewModel
+@{
+    ViewBag.Title = "Управление";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Изменение параметров учетной записи</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Пароль:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Смена пароля", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Создать", "SetPassword")
+            }
+            ]
+        </dd>
+   </dl>
+    @*@Html.ActionLink("Добавить", "CreateData", "Table_CompanyController")*@
+    <a href="http://localhost:51928/Table_Ads/Create" target="_self"><p style="font-family:Arial, Helvetica, sans-serif;font-size:30px"><b>Добавить новое объявление</b></p></a> <br />
+    <a href="http://localhost:51928/Table_Ads/Index" target="_self"><p style="font-family:Arial, Helvetica, sans-serif;font-size:24px"><b>Просмотреть все объявления</b></p></a> <br />
+    <a href="http://localhost:51928/Table_Company/Create" target="_self"><p style="font-family:Arial, Helvetica, sans-serif;font-size:30px"><b>Добавить новую компанию</b></p></a><br />
+    <a href="http://localhost:51928/Table_Company/Index" target="_self"><p style="font-family:Arial, Helvetica, sans-serif;font-size:24px"><b>Просмотреть все компании</b></p></a> <br />
+    <a href="http://localhost:51928/Table_Rubrics/Create" target="_self"><p style="font-family:Arial, Helvetica, sans-serif;font-size:30px"><b>Добавить новую рубрику</b></p></a> <br />
+    <a href="http://localhost:51928/Table_Rubrics/Index" target="_self"><p style="font-family:Arial, Helvetica, sans-serif;font-size:24px"><b>Просмотреть все рубрики</b></p></a> <br />
+@*@using (Html.BeginForm())
+{
+    <dl>
+        <dt>Person Name </dt>
+        <dd><input name="persname" value="@ViewBag.persname" size="300" /></dd>
+        <dt>Person Surname</dt>
+        <dd><input name="perssname" value="@ViewBag.perssname" size="300" /></dd>
+        <dt>Person Second Name</dt>
+        <dd><input name="persecname" value="@ViewBag.persecname" size="300" /></dd>
+        <dt>Company Name</dt>
+        <dd><input name="compname" value="@ViewBag.comp" size="300" /></dd>
+        <dt>Company Package</dt>
+        <dd><input name="comppack" value="@ViewBag.comppack" size="300" /></dd>
+        <dt>Company Phone</dt>
+        <dd><input name="compphone" value="@ViewBag.compphone" size="300" /></dd>
+        <dt>Company Adress</dt>
+        <dd><input name="compadr" value="@ViewBag.compadr" size="300" /></dd>
+        <dt>Company Site</dt>
+        <dd><input name="compsite" value="@ViewBag.compsite" size="300" /></dd>
+        <dt>Company Mail</dt>
+        <dd><input name="compmail" value="@ViewBag.compmail" size="300" /></dd>
+        <dt>Company Fax</dt>
+        <dd><input name="compfax" value="@ViewBag.compfax" size="300" /></dd>
+        <dt>Company Info</dt>
+        <dd><input name="compinfo" value="@ViewBag.compinfo" size="300" /></dd>
+        <dt>Company Pack End Date</dt>
+        <dd><input name="persname" value="@ViewBag.persname" size="300" /></dd>
+    </dl>
+    <span>
+        <button type="submit" name="btncomp" id="btncomp">Добавить</button>
+    </span>*@
+@*}*@
+
+
+
+    @*<dt>Внешние имена входа:</dt>
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Управление", "ManageLogins") ]
+        </dd>*@
+        @*
+            Номера телефонов можно использовать в качестве второго проверочного фактора для системы двухфакторной проверки подлинности.
+             
+             В <a href="http://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
+                вы можете узнать, как настроить для этого приложения ASP.NET двухфакторную проверку подлинности с использованием SMS.
+             
+             Настроив двухфакторную проверку подлинности, раскомментируйте следующий блок.
+        *@
+        @*  
+            <dt>Номер телефона:</dt>
+            <dd>
+                @(Model.PhoneNumber ?? "None")
+                @if (Model.PhoneNumber != null)
+                {
+                    <br />
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                    }
+                }
+                else
+                {
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                }
+            </dd>
+        *@
+        @*<dt>Двухфакторная проверка подлинности:</dt>
+        <dd>
+            <p>
+                Поставщики двухфакторной проверки подлинности не настроены. В <a href="http://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
+                вы можете узнать, как настроить двухфакторную проверку подлинности в этом приложении ASP.NET.
+            </p>*@
+            @*@if (Model.TwoFactor)
+                {
+                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Включено
+                        <input type="submit" value="Отключить" class="btn btn-link" />
+                        </text>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Отключено
+                        <input type="submit" value="Включить" class="btn btn-link" />
+                        </text>
+                    }
+                }*@
+        @*</dd>*@
+    </dl>
+</div>

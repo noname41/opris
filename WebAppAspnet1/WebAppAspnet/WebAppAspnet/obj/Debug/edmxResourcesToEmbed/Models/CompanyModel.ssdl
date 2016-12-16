@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище OPRISModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Table_AdCompany">
+    <Key>
+      <PropertyRef Name="id_Ad" />
+      <PropertyRef Name="id_Company" />
+    </Key>
+    <Property Name="id_Ad" Type="int" Nullable="false" />
+    <Property Name="id_Company" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Ads">
+    <Key>
+      <PropertyRef Name="id_Ad" />
+    </Key>
+    <Property Name="id_Ad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="adConfirm" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="adDatePublic" Type="datetime" Nullable="false" />
+    <Property Name="adText" Type="nvarchar(max)" />
+    <Property Name="id_Rubric" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Company">
+    <Key>
+      <PropertyRef Name="id_Company" />
+    </Key>
+    <Property Name="id_Company" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="companyPersonName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="companyPersonSurname" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="companyPersonSecName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="companyName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="companyPackage" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="companyPhone" Type="int" Nullable="false" />
+    <Property Name="companyAdress" Type="nchar" MaxLength="80" />
+    <Property Name="companySite" Type="nchar" MaxLength="50" />
+    <Property Name="companyMail" Type="nchar" MaxLength="50" />
+    <Property Name="companyFax" Type="int" />
+    <Property Name="companyInfo" Type="nchar" MaxLength="250" />
+    <Property Name="companyPackEndDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Table_RubAd">
+    <Key>
+      <PropertyRef Name="id_Ad" />
+      <PropertyRef Name="id_Rubric" />
+    </Key>
+    <Property Name="id_Ad" Type="int" Nullable="false" />
+    <Property Name="id_Rubric" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Rubrics">
+    <Key>
+      <PropertyRef Name="id_Rubric" />
+    </Key>
+    <Property Name="id_Rubric" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rubName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table_Users">
+    <Key>
+      <PropertyRef Name="id_User" />
+    </Key>
+    <Property Name="id_User" Type="int" Nullable="false" />
+    <Property Name="userLogin" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userRole" Type="nvarchar" MaxLength="7" Nullable="false" />
+    <Property Name="id_Company" Type="int" />
+  </EntityType>
+  <Association Name="FK_Table_AdCompany_Table_Ads">
+    <End Role="Table_Ads" Type="Self.Table_Ads" Multiplicity="1" />
+    <End Role="Table_AdCompany" Type="Self.Table_AdCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Ads">
+        <PropertyRef Name="id_Ad" />
+      </Principal>
+      <Dependent Role="Table_AdCompany">
+        <PropertyRef Name="id_Ad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_AdCompany_Table_Company">
+    <End Role="Table_Company" Type="Self.Table_Company" Multiplicity="1" />
+    <End Role="Table_AdCompany" Type="Self.Table_AdCompany" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Company">
+        <PropertyRef Name="id_Company" />
+      </Principal>
+      <Dependent Role="Table_AdCompany">
+        <PropertyRef Name="id_Company" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_RubAd_Table_Ads">
+    <End Role="Table_Ads" Type="Self.Table_Ads" Multiplicity="1" />
+    <End Role="Table_RubAd" Type="Self.Table_RubAd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Ads">
+        <PropertyRef Name="id_Ad" />
+      </Principal>
+      <Dependent Role="Table_RubAd">
+        <PropertyRef Name="id_Ad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Users_Table_Company">
+    <End Role="Table_Company" Type="Self.Table_Company" Multiplicity="0..1" />
+    <End Role="Table_Users" Type="Self.Table_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Table_Company">
+        <PropertyRef Name="id_Company" />
+      </Principal>
+      <Dependent Role="Table_Users">
+        <PropertyRef Name="id_Company" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище OPRISModelContainer">
+    <EntitySet Name="Table_AdCompany" EntityType="Self.Table_AdCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Ads" EntityType="Self.Table_Ads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Company" EntityType="Self.Table_Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_RubAd" EntityType="Self.Table_RubAd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Rubrics" EntityType="Self.Table_Rubrics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table_Users" EntityType="Self.Table_Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Table_AdCompany_Table_Ads" Association="Self.FK_Table_AdCompany_Table_Ads">
+      <End Role="Table_Ads" EntitySet="Table_Ads" />
+      <End Role="Table_AdCompany" EntitySet="Table_AdCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_AdCompany_Table_Company" Association="Self.FK_Table_AdCompany_Table_Company">
+      <End Role="Table_Company" EntitySet="Table_Company" />
+      <End Role="Table_AdCompany" EntitySet="Table_AdCompany" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_RubAd_Table_Ads" Association="Self.FK_Table_RubAd_Table_Ads">
+      <End Role="Table_Ads" EntitySet="Table_Ads" />
+      <End Role="Table_RubAd" EntitySet="Table_RubAd" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Users_Table_Company" Association="Self.FK_Table_Users_Table_Company">
+      <End Role="Table_Company" EntitySet="Table_Company" />
+      <End Role="Table_Users" EntitySet="Table_Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
