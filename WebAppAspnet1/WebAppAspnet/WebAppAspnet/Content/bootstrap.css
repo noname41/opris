@@ -376,7 +376,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #c7c9ca;
 }
 
 input,
@@ -4997,7 +4997,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #f16c0f;
 }
 
 .jumbotron h1 {
@@ -6880,7 +6880,7 @@ td.visible-print {
 }
 #kkk {
     align-items:center;
-    width: 1400px;
+    width: 1000px;
     margin-bottom:25px;
 }
 #strquery{width:500px;padding-left:5px;padding-right:5px;}

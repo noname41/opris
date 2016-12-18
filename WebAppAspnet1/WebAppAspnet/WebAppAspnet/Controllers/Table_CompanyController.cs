@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using WebAppAspnet.Models;
 
@@ -42,8 +38,6 @@ namespace WebAppAspnet.Controllers
         }
 
         // POST: Table_Company/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id_Company,companyPersonName,companyPersonSurname,companyPersonSecName,companyName,companyPackage,companyPhone,companyAdress,companySite,companyMail,companyFax,companyInfo,companyPackEndDate")] Table_Company table_Company)
@@ -74,8 +68,6 @@ namespace WebAppAspnet.Controllers
         }
 
         // POST: Table_Company/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id_Company,companyPersonName,companyPersonSurname,companyPersonSecName,companyName,companyPackage,companyPhone,companyAdress,companySite,companyMail,companyFax,companyInfo,companyPackEndDate")] Table_Company table_Company)
