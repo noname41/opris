@@ -3,9 +3,9 @@
 
 @foreach (Table_Ads item in Model)
 {
-        <div class="product-box" @*onclick="Page.Redirect(Detail.cshtml?@<=id=item.id)>"*@>
-            <p><a><img src="" alt="" /></a></p>
-            <a class="title" href="http://localhost:51928/Home/Details"> @item.adTitle </a><br />
-            <a class="category">Дата: @item.adDatePublic</a><br />
-        </div>
+    <div class="product-box">
+        <p><a><img src="" alt="" /></a></p>
+        <p>@Html.ActionLink(@item.adTitle, "Details", new { id = item.id_Ad })</p>
+        <p> Дата: @item.adDatePublic </p>
+    </div>
 }
