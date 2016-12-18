@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebAppAspnet.Models;
 using System.Data.Entity;
@@ -51,7 +49,6 @@ namespace WebAppAspnet.Controllers
 
         public PartialViewResult GetAds(string filter = null, string cmbox = null)
         {
-            //List<Table_Ads> model = db.Table_Ads
             List<Table_Ads> model = db.Table_Ads.Include(p => p.Table_Rubrics).ToList();
             List<Table_Ads> reslist = new List<Table_Ads>();
             if ((filter == null || filter == "") && (cmbox == null || cmbox == "Выберите рубрику"))
@@ -97,13 +94,10 @@ namespace WebAppAspnet.Controllers
             return PartialView("_tableAds", reslist);
         }
 
-
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = "ООО ТРИ БОГАТЫРЯ";
             return View();
         }
-
     }
 }

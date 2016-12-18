@@ -4,7 +4,6 @@
 @foreach (Table_Ads item in Model)
 {
     <div class="product-box">
-        <p><a><img src="" alt="" /></a></p>
         <p>@Html.ActionLink(@item.adTitle, "Details", new { id = item.id_Ad })</p>
         <p> Дата: @item.adDatePublic </p>
     </div>
