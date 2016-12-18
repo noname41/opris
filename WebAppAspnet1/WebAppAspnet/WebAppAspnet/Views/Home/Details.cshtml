@@ -1,86 +1,108 @@
-﻿@model WebAppAspnet.Models.UserModel
+﻿@model WebAppAspnet.Models.Table_Company
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Подробнее</h2>
-<h2>Рубрика: @Html.DisplayFor(model => model.adTitle)</h2>
+<h2>Информация о компании</h2>
 <div>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.idAd)
+            @Html.DisplayNameFor(model => model.companyPersonName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idAd)
+            @Html.DisplayFor(model => model.companyPersonName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.adTitle)
+            @Html.DisplayNameFor(model => model.companyPersonSurname)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.adTitle)
+            @Html.DisplayFor(model => model.companyPersonSurname)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.adConfirm)
+            @Html.DisplayNameFor(model => model.companyPersonSecName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.adConfirm)
+            @Html.DisplayFor(model => model.companyPersonSecName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.adDatePublic)
+            @Html.DisplayNameFor(model => model.companyName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.adDatePublic)
+            @Html.DisplayFor(model => model.companyName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.adText)
+            @Html.DisplayNameFor(model => model.companyPackage)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.adText)
+            @Html.DisplayFor(model => model.companyPackage)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.idRubric)
+            @Html.DisplayNameFor(model => model.companyPhone)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idRubric)
+            @Html.DisplayFor(model => model.companyPhone)
         </dd>
 
-    </dl>
-</div>
+        <dt>
+            @Html.DisplayNameFor(model => model.companyAdress)
+        </dt>
 
-<div>
-    <hr />
-    <h4>Информация о компании</h4>
-    <dl class="dl-horizontal">
-        <dt>CompanyPersonName</dt>
-        <dd>Иван</dd>
-        <dt>CompanyPersonSurName</dt>
-        <dd>Иванов</dd>
-        <dt>CompanyPersonSecName</dt>
-        <dd>Иванович</dd>
-        <dt>CompanyName</dt>
-        <dd>Три богатыря</dd>
-        <dt>CompanyPhone</dt>
-        <dd>228228</dd>
-        <dt>CompanyAdress</dt>
-        <dd>ул.Генкеля 7</dd>
-        <dt>CompanySite</dt>
-        <dd>http://www.psu.ru/</dd>
-        <dt>CompanyMail</dt>
-        <dd>yurka@gmail.com</dd>
+        <dd>
+            @Html.DisplayFor(model => model.companyAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companySite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companySite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyFax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyFax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyPackEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyPackEndDate)
+        </dd>
     </dl>
 </div>
 

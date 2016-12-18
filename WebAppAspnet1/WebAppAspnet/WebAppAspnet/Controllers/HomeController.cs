@@ -17,13 +17,26 @@ namespace WebAppAspnet.Controllers
         {
             return View();
         }
+        //[HttpPost]
+        public ActionResult Details(int? id)
+        {
+            Table_Company company = new Table_Company();
+            List<Table_Company> modelcomp = db.Table_Company.Include(p => p.Table_Ads).ToList();
+            foreach (Table_Company ta in modelcomp)
+            {
+                foreach (Table_Ads tr in ta.Table_Ads)
+                {
+                    if (id == tr.id_Ad)
+                    {
+                        company = ta;
+                        break;
+                    }
+                }
+            }
+            return View("Details", company);
+        }
 
-        //public PartialViewResult All()
-        //{
-        //    List<Table_Ads> model = db.Table_Ads.ToList();
-        //    return PartialView("_Ads", model);
-        //}  
-        [HttpPost] 
+        [HttpPost]
         public ActionResult Index1(string filter)
         {
             ViewBag.filter = filter;
@@ -35,86 +48,6 @@ namespace WebAppAspnet.Controllers
             ViewBag.cmbox = cmbox;
             return View();
         }
-        [HttpPost]
-        public ActionResult PersName(string persname)
-        {
-            ViewBag.persname = persname;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult PersSurn(string perssname)
-        {
-            ViewBag.perssname = perssname;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult PersSecn(string persecname)
-        {
-            ViewBag.persecname = persecname;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompName(string compname)
-        {
-            ViewBag.compname = compname;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompPack(string comppack)
-        {
-            ViewBag.comppack = comppack;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompPhone(string compphone)
-        {
-            ViewBag.compphone = compphone;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompAdr(string compadr)
-        {
-            ViewBag.compadr = compadr;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompSite(string compsite)
-        {
-            ViewBag.compsite = compsite;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompMail(string compmail)
-        {
-            ViewBag.compmail = compmail;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompFax(string compfax)
-        {
-            ViewBag.compfax = compfax;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompanyInfo(string compinfo)
-        {
-            ViewBag.compinfo = compinfo;
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CompanyPackEnd(string pckdate)
-        {
-            ViewBag.pckdate = pckdate;
-            return View();
-        }
-
-        public ActionResult AddCompany(string persname = null, string perssname = null, string persecname = null, string compname = null, string comppack = null, string compphone = null, string compadr = null, string compsite = null, string compmail = null, string compfax = null, string compinfo = null, string pckdate = null)
-        {
-
-
-            return View();
-        }
-
 
         public PartialViewResult GetAds(string filter = null, string cmbox = null)
         {
@@ -151,23 +84,19 @@ namespace WebAppAspnet.Controllers
                                     var obj = ta;
                                     reslist.Add(obj);
                                 }
-                                else 
+                                else
                                 {
-                                    
-                                }                        
+
+                                }
                             }
                         }
                     }
-                    }
                 }
+            }
 
             return PartialView("_tableAds", reslist);
         }
 
-        //public ActionResult Details(int id)
-        //{
-        //    return View(UserDataStore.Instance.GetUserByUserId(id));
-        //}
 
         public ActionResult Contact()
         {
