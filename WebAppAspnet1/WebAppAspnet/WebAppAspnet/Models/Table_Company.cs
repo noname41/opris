@@ -45,7 +45,7 @@ namespace WebAppAspnet.Models
         public Nullable<int> companyFax { get; set; }
         [Display(Name = "Информация о компании")]
         public string companyInfo { get; set; }
-        [Display(Name = "Окончание публикации объявления")]
+        [Display(Name = "Окончание публикации")]
         public Nullable<System.DateTime> companyPackEndDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -4,7 +4,7 @@
  * purpose of either: (i) interacting through your browser with the Microsoft
  * website or online service, subject to the applicable licensing or use
  * terms; or (ii) using the files as included with a Microsoft product subject
- * to that product's license terms. Microsoft reserves all other rights to the
+ * to that product'ccc license terms. Microsoft reserves all other rights to the
  * files not expressly granted by Microsoft, whether by implication, estoppel
  * or otherwise. The notices and licenses below are for informational purposes only.
  *
@@ -223,7 +223,7 @@ button,
 input,
 select,
 textarea {
-  margin: 0;
+  margin: 1;
   font-family: inherit;
   font-size: 100%;
 }
@@ -672,15 +672,16 @@ dd {
 @media (min-width: 768px) {
   .dl-horizontal dt {
     float: left;
-    width: 160px;
+    width: 180px;
+    height:25px;
     overflow: hidden;
     clear: left;
     text-align: right;
     text-overflow: ellipsis;
-    white-space: nowrap;
+   white-space: nowrap;
   }
   .dl-horizontal dd {
-    margin-left: 180px;
+    margin-left: 200px;
   }
   .dl-horizontal dd:before,
   .dl-horizontal dd:after {
@@ -847,6 +848,7 @@ pre code {
 .row {
   margin-right: -15px;
   margin-left: -15px;
+  align-content:center;
 }
 
 .row:before,
@@ -868,7 +870,7 @@ pre code {
 .row:after {
   clear: both;
 }
-
+#kkk{margin-left:175px;}
 .col-xs-1,
 .col-xs-2,
 .col-xs-3,
@@ -6876,3 +6878,12 @@ td.visible-print {
   }
 
 }
+#kkk {
+    align-items:center;
+    width: 1400px;
+    margin-bottom:25px;
+}
+#strquery{width:500px;padding-left:5px;padding-right:5px;}
+#strselect{width:250px;padding:1px 1px 1px 1px;}
+
+#strquery, #strselect,#butselect{height:35px;}

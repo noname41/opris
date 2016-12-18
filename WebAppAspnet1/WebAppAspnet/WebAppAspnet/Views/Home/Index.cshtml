@@ -13,7 +13,7 @@
 
 <div class="row">
 
-    <p style="font-family:Arial, Helvetica, sans-serif;font-size:36px"><b>Поиск объявления...</b> </p>
+    <p style="font-family:Arial, Helvetica, sans-serif;font-size:26px; text-align: center;"><b>Поиск объявления</b> </p>
     <div class="search">
         @{
             AjaxOptions ajax = new AjaxOptions
@@ -25,17 +25,19 @@
         <div>
         @using (Ajax.BeginForm(ajax))
         {
-            <input name = "filter" id = "strquery" value = "@ViewBag.filter" placeholder = "поиск по сайту" size = "300"/>
-            <select name = "cmbox" onselect = "@ViewBag.cmbox" style = "height: 26px">
-                <option> Выберите рубрику </option>
-                <option > Social Services </option>
-                <option > Transport </option>
-                <option > Building </option>
-                <option > Work </option>
-            </select>
-            <span>
-                <button type = "submit" > Найти </button >
-            </span>
+            <div id="kkk">
+                <input type="text" name="filter" id="strquery" value="@ViewBag.filter" placeholder="Поиск по сайту" size="400" style="text-align:left; font-size:medium;"/>
+                <select name="cmbox" id="strselect"  onselect="@ViewBag.cmbox">
+                    <option> Выберите рубрику </option>
+                    <option> Social Services </option>
+                    <option> Transport </option>
+                    <option> Building </option>
+                    <option> Work </option>
+                </select>
+                <span>
+                    <button id="butselect" type="submit"> Найти </button>
+                </span>
+            </div>
             <div class ="row" id="programmersList">
                     @Html.Action("GetAds")
             </div>
